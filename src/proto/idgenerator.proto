@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pbidgenerator;
+
+service IdGeneratorServer {
+  rpc GenSingleMessageId (SingleMessageId) returns (SingleMessageIdReply) {}
+}
+
+message SingleMessageId {
+  string transid = 1;
+  uint64 fromUid = 2;
+  uint64 toUid = 3;
+  uint32 num = 4;                 // 一次请求期望批量生成的Id数量
+}
+
+message SingleMessageIdReply {
+  repeated uint64 srvIds = 1;      // 全局唯一，消息Id
+  repeated uint64 orderIds = 2;    // 会话唯一，消息排序Id
+}
