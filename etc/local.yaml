@@ -4,7 +4,7 @@ info:
   id: 100
 log:
   path: 
-  console: true
+  console: false
   level: INFO
 DB:
   path:

@@ -81,7 +81,7 @@ func (d *DB) GenSingleMessageID(fromUID, toUID uint64, num uint32) ([]uint64, []
 	orderIDs := make([]uint64, num)
 
 	timeStamp := uint64(time.Now().Unix()) << 32 & 0xFFFFFFFF00000000
-	srvID := uint32(d.instanceid<<20) & 0xFFF00000
+	srvID := (uint32(d.instanceid) << 20) & 0xFFF00000
 	for i := 0; i < int(num); i++ {
 		curOrderID++
 		seqID := d.genIncrID(timeStamp)
